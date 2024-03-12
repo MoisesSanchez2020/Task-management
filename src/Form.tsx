@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 
+
+
+
+
+
+
+
+
+
 interface TaskFormProps {
   onSubmit: (
     title: string,
@@ -24,12 +33,14 @@ const TaskForm: React.FC<TaskFormProps> = ({
   const [description, setDescription] = useState(initialDescription);
   const [dueDate, setDueDate] = useState(initialDueDate);
   const [priority, setPriority] = useState(initialPriority);
+  const [priorityColor, setPriorityColor] = useState<string>("");
 
   useEffect(() => {
     setTitle(initialTitle);
     setDescription(initialDescription);
     setDueDate(initialDueDate);
     setPriority(initialPriority);
+    setPriorityColor(getPriorityColor(initialPriority));
   }, [initialTitle, initialDescription, initialDueDate, initialPriority]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -39,6 +50,25 @@ const TaskForm: React.FC<TaskFormProps> = ({
     setDescription("");
     setDueDate("");
     setPriority("");
+  };
+
+  const getPriorityColor = (priority: string): string => {
+    switch (priority) {
+      case "high":
+        return "red";
+      case "medium":
+        return "orange";
+      case "low":
+        return "green";
+      default:
+        return "";
+    }
+  };
+
+  const handlePriorityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedPriority = e.target.value;
+    setPriority(selectedPriority);
+    setPriorityColor(getPriorityColor(selectedPriority));
   };
 
   return (
@@ -91,13 +121,17 @@ const TaskForm: React.FC<TaskFormProps> = ({
         <select
           id="priority"
           value={priority}
-          onChange={(e) => setPriority(e.target.value)}
+          onChange={handlePriorityChange}
           className="px-3 py-2 border border-gray-300 rounded-md"
         >
           <option value="high">High</option>
           <option value="medium">Medium</option>
           <option value="low">Low</option>
         </select>
+        <div
+          className="w-full h-3 mt-1"
+          style={{ backgroundColor: priorityColor }} // Apply priority color dynamically
+        ></div>
       </div>
 
       <button

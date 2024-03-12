@@ -5,4 +5,75 @@
 body {
     background-color: #add8e6; /* Replace with any color you like */
   }
+
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 40px;
+  }
   
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #ddd;
+  }
+
+
+  
+  /* Styles for the footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  position: fixed; /* Change position to fixed */
+  bottom: 0;
+  width: 100%;
+}
+
+
+
+.sidebar {
+  width: 250px;
+  background-color: #f3f3f3;
+  height: 100vh; /* Full height */
+  /* ... */
+}
+
+.sidebar-header {
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  /* ... */
+}
+
+.sidebar-nav .nav-item {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-align: left;
+  /* ... */
+}
+
+.nav-section-title {
+  padding-left: 10px;
+  color: grey;
+  font-size: 0.85em;
+  margin-top: 20px;
+  /* ... */
+}
